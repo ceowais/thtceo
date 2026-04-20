@@ -2005,7 +2005,7 @@ export default function App() {
             <div className="pt-12">
               <div className="text-center mb-16">
                 <FadeInUp>
-                  <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-6">Learn Like <span className="font-elegant italic">Me</span></h2>
+                  <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-6">Grow With <span className="font-elegant italic">Me</span></h2>
                   <p className="text-xl text-gray-500 leading-relaxed max-w-3xl mx-auto">
                     Your growth with me is exponential. You will bypass the years of trial and error by absorbing the exact professional concepts, assets, and mindset I used to build this empire. Follow the blueprint.
                   </p>

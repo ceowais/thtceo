@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, User, ShoppingBag, ChevronDown, Menu, X, ArrowRight, Check, Facebook, Mail, MapPin, Phone, LogOut, Settings, CreditCard, Star, MessageCircle, Instagram, Twitter, Youtube, ShieldCheck, ChevronRight, Code, PenTool, Cpu, Quote, TrendingUp, Award, Users, Globe, Smartphone, Monitor, AlertTriangle, Lock, Zap, Layers, CheckCircle, Database, Cloud } from 'lucide-react';
-import SubjectLogo from './Subject.png';
+
 // Firebase Imports
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
@@ -249,19 +249,19 @@ const TestimonialSlider = () => {
           
           <div className="animate-marquee-slow flex w-max space-x-6 px-3 group-hover:[animation-play-state:paused]">
              {[...SUCCESS_STORIES, ...SUCCESS_STORIES].map((story, idx) => (
-               <div key={idx} className="w-[320px] md:w-[450px] flex-shrink-0 bg-white border border-gray-100 rounded-[2rem] p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-default">
+               <div key={idx} className="w-[280px] md:w-[340px] flex-shrink-0 bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-default">
                  <div>
                     <div className="flex mb-4">
-                      {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />)}
+                      {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />)}
                     </div>
-                    <Quote className="w-8 h-8 text-gray-200 mb-4" />
-                    <p className="text-gray-600 leading-relaxed mb-8 italic">"{story.quote}"</p>
+                    <Quote className="w-6 h-6 text-gray-200 mb-3" />
+                    <p className="text-gray-600 leading-relaxed mb-6 italic text-sm">"{story.quote}"</p>
                  </div>
-                 <div className="flex items-center space-x-4 border-t border-gray-50 pt-6">
-                    <div className="w-12 h-12 bg-black text-white flex items-center justify-center rounded-full font-serif text-xl">{story.initial}</div>
+                 <div className="flex items-center space-x-3 border-t border-gray-50 pt-4">
+                    <div className="w-10 h-10 bg-black text-white flex items-center justify-center rounded-full font-serif text-lg">{story.initial}</div>
                     <div>
-                       <h4 className="font-medium text-black">{story.name}</h4>
-                       <p className="text-gray-500 text-xs uppercase tracking-widest">{story.title}</p>
+                       <h4 className="font-medium text-black text-sm">{story.name}</h4>
+                       <p className="text-gray-500 text-[10px] uppercase tracking-widest">{story.title}</p>
                     </div>
                  </div>
                </div>
@@ -273,135 +273,141 @@ const TestimonialSlider = () => {
 };
 
 const DatabaseInventory = () => {
-  const localCompanies = [
-    { name: "TechNova Solutions", icon: <Cpu className="w-6 h-6 mr-2" /> },
-    { name: "DevCore Systems", icon: <Code className="w-6 h-6 mr-2" /> },
-    { name: "AppSphere", icon: <Globe className="w-6 h-6 mr-2" /> },
-    { name: "DataFlow Networks", icon: <Database className="w-6 h-6 mr-2" /> },
-    { name: "QuantumSoft", icon: <Layers className="w-6 h-6 mr-2" /> },
-    { name: "LogicGate Labs", icon: <Monitor className="w-6 h-6 mr-2" /> },
-    { name: "CloudSync", icon: <Cloud className="w-6 h-6 mr-2" /> }
+  const companyLogos = [
+    { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" },
+    { name: "Spotify", logo: "https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" },
+    { name: "Stripe", logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" },
+    { name: "Netflix", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+    { name: "Airbnb", logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg" },
+    { name: "Slack", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Slack_Technologies_Logo.svg" },
+    { name: "Vercel", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Vercel_logo_black.svg" }
   ];
 
   return (
-    <div className="bg-[#0a0a0a] text-white py-32 my-32 relative overflow-hidden rounded-[3rem] shadow-2xl mx-4 md:mx-12 max-w-[1400px] xl:mx-auto border border-white/10">
-       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[1000px] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none"></div>
+    <>
+      <div className="bg-[#0a0a0a] text-white py-32 my-32 relative overflow-hidden rounded-[3rem] shadow-2xl mx-4 md:mx-12 max-w-[1400px] xl:mx-auto border border-white/10">
+         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[1000px] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none"></div>
 
-       <div className="max-w-[1200px] mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center px-6">
-           <FadeInUp>
-              <div className="inline-flex items-center justify-center space-x-2 bg-white/10 px-4 py-1.5 rounded-full border border-white/20 mb-6 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                 <Database className="w-4 h-4 text-blue-400" />
-                 <span className="text-xs font-bold uppercase tracking-widest text-white">Large Scale Data Inventory</span>
-              </div>
-              <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-6 leading-tight">
-                Database We Have: <span className="font-elegant italic block mt-2 text-5xl md:text-7xl">5 Crore People</span>
-              </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                We possess a massive, unparalleled inventory of data and assets. Our ultra-exclusive, actively verified <strong>50 Million+ (5 Crore)</strong> people's database is fully updated with the highly accurate <strong>2026 list</strong>. Leverage this for ultimate B2B & B2C outreach and scaling.
-              </p>
-              <a href="mailto:data@thtceo.com" className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)]">
-                <Mail className="w-4 h-4 mr-2" /> Request Database Access
-              </a>
-           </FadeInUp>
+         <div className="max-w-[1200px] mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center px-6">
+             <FadeInUp>
+                <div className="inline-flex items-center justify-center space-x-2 bg-white/10 px-4 py-1.5 rounded-full border border-white/20 mb-6 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                   <Database className="w-4 h-4 text-blue-400" />
+                   <span className="text-xs font-bold uppercase tracking-widest text-white">Large Scale Data Inventory</span>
+                </div>
+                <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-6 leading-tight">
+                  Database We Have: <span className="font-elegant italic block mt-2 text-5xl md:text-7xl">5 Crore People</span>
+                </h2>
+                <p className="text-gray-400 text-lg leading-relaxed mb-8">
+                  We have DataBase of <strong>Pan India & International</strong>, which we have large number of inventories of data and assests, <strong>5 crore</strong> peoples database with us with updated list of <strong>2026</strong>. Leverage this for ultimate B2B & B2C outreach.
+                </p>
+                <a href="mailto:data@thtceo.com" className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)]">
+                  <Mail className="w-4 h-4 mr-2" /> Request Database Access
+                </a>
+             </FadeInUp>
 
-           <FadeInUp delay={200} className="relative">
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden group shadow-2xl">
-                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-purple-600/10 opacity-50 transition-opacity duration-1000"></div>
-                 <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4 relative z-10">
-                    <div>
-                      <h3 className="text-xl font-medium tracking-wide">Data Acquisition Growth</h3>
-                      <p className="text-[10px] text-gray-500 font-mono tracking-widest uppercase mt-1">Live Database Index (Upto 5 Cr)</p>
-                    </div>
-                    <TrendingUp className="w-6 h-6 text-blue-400 animate-pulse" />
-                 </div>
-                 
-                 {/* Animated SVG Line Chart - Transition Up */}
-                 <div className="relative w-full h-56 mt-8 pb-6 border-b border-l border-white/20 pl-2">
-                    <svg viewBox="0 0 400 150" className="w-full h-full overflow-visible">
-                      <defs>
-                        <linearGradient id="lineGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#3b82f6" />
-                          <stop offset="50%" stopColor="#8b5cf6" />
-                          <stop offset="100%" stopColor="#10b981" />
-                        </linearGradient>
-                        <linearGradient id="fillGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="rgba(16, 185, 129, 0.4)" />
-                          <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
-                        </linearGradient>
-                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                          <feGaussianBlur stdDeviation="4" result="blur" />
-                          <feMerge>
-                            <feMergeNode in="blur" />
-                            <feMergeNode in="SourceGraphic" />
-                          </feMerge>
-                        </filter>
-                      </defs>
+             <FadeInUp delay={200} className="relative">
+                <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden group shadow-2xl">
+                   <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-purple-600/10 opacity-50 transition-opacity duration-1000"></div>
+                   <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4 relative z-10">
+                      <div>
+                        <h3 className="text-xl font-medium tracking-wide">Data Acquisition Growth</h3>
+                        <p className="text-[10px] text-gray-500 font-mono tracking-widest uppercase mt-1">Live Database Index (Upto 5 Cr)</p>
+                      </div>
+                      <TrendingUp className="w-6 h-6 text-blue-400 animate-pulse" />
+                   </div>
+                   
+                   {/* Animated SVG Line Chart - Transition Up */}
+                   <div className="relative w-full h-56 mt-8 pb-6 border-b border-l border-white/20 pl-2">
+                      <svg viewBox="0 0 400 150" className="w-full h-full overflow-visible">
+                        <defs>
+                          <linearGradient id="lineGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#3b82f6" />
+                            <stop offset="50%" stopColor="#8b5cf6" />
+                            <stop offset="100%" stopColor="#10b981" />
+                          </linearGradient>
+                          <linearGradient id="fillGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="rgba(16, 185, 129, 0.4)" />
+                            <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
+                          </linearGradient>
+                          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="4" result="blur" />
+                            <feMerge>
+                              <feMergeNode in="blur" />
+                              <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                          </filter>
+                        </defs>
+                        
+                        {/* Area Fill that fades/transitions UP */}
+                        <path
+                          d="M0,140 C 100,140 150,80 250,60 C 320,40 380,20 400,0 L 400,150 L 0,150 Z"
+                          fill="url(#fillGradient)"
+                          className="origin-bottom transform scale-y-0 opacity-0"
+                          style={{ transformBox: 'fill-box', animation: 'scaleUp 1.5s ease-out 0.5s forwards' }}
+                        />
+
+                        {/* Line drawing animation */}
+                        <path
+                          d="M0,140 C 100,140 150,80 250,60 C 320,40 380,20 400,0"
+                          fill="none"
+                          stroke="url(#lineGradient)"
+                          strokeWidth="4"
+                          filter="url(#glow)"
+                          className="animate-draw-line"
+                        />
+                        
+                        {/* Data Points */}
+                        <circle cx="0" cy="140" r="4" fill="#fff" className="animate-pulse shadow-xl opacity-0" style={{ animation: 'fadeIn 0.5s ease-in forwards 0.2s'}} />
+                        <circle cx="150" cy="80" r="4" fill="#fff" className="animate-pulse shadow-xl opacity-0" style={{ animation: 'fadeIn 0.5s ease-in forwards 1s'}} />
+                        <circle cx="250" cy="60" r="4" fill="#fff" className="animate-pulse shadow-xl opacity-0" style={{ animation: 'fadeIn 0.5s ease-in forwards 1.5s'}} />
+                        
+                        {/* Final Target Node */}
+                        <circle cx="400" cy="0" r="8" fill="#10b981" className="opacity-0 drop-shadow-[0_0_15px_rgba(16,185,129,1)]" style={{ animation: 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 2.5s'}} />
+                      </svg>
                       
-                      {/* Area Fill that fades/transitions UP */}
-                      <path
-                        d="M0,140 C 100,140 150,80 250,60 C 320,40 380,20 400,0 L 400,150 L 0,150 Z"
-                        fill="url(#fillGradient)"
-                        className="animate-fade-in-up origin-bottom transform scale-y-0 opacity-0"
-                        style={{animation: 'scaleUp 1.5s ease-out 0.5s forwards'}}
-                      />
+                      {/* Y Axis Labels */}
+                      <div className="absolute left-[-2rem] top-0 bottom-6 flex flex-col justify-between text-[10px] text-gray-500 font-mono">
+                         <span>5Cr</span>
+                         <span>3Cr</span>
+                         <span>1Cr</span>
+                         <span>0</span>
+                      </div>
+                   </div>
+                   
+                   <div className="flex justify-between mt-4 text-[10px] text-gray-500 font-mono tracking-widest relative z-10 pl-2">
+                     <span>2022</span>
+                     <span>2024</span>
+                     <span className="text-emerald-400 font-bold text-xs bg-emerald-400/10 px-2 py-1 rounded">2026 (UPDATED)</span>
+                   </div>
+                </div>
+             </FadeInUp>
+         </div>
+      </div>
 
-                      {/* Line drawing animation */}
-                      <path
-                        d="M0,140 C 100,140 150,80 250,60 C 320,40 380,20 400,0"
-                        fill="none"
-                        stroke="url(#lineGradient)"
-                        strokeWidth="4"
-                        filter="url(#glow)"
-                        className="animate-draw-line"
-                      />
-                      
-                      {/* Data Points */}
-                      <circle cx="0" cy="140" r="4" fill="#fff" className="animate-pulse shadow-xl opacity-0" style={{ animation: 'fadeIn 0.5s ease-in forwards 0.2s'}} />
-                      <circle cx="150" cy="80" r="4" fill="#fff" className="animate-pulse shadow-xl opacity-0" style={{ animation: 'fadeIn 0.5s ease-in forwards 1s'}} />
-                      <circle cx="250" cy="60" r="4" fill="#fff" className="animate-pulse shadow-xl opacity-0" style={{ animation: 'fadeIn 0.5s ease-in forwards 1.5s'}} />
-                      
-                      {/* Final Target Node */}
-                      <circle cx="400" cy="0" r="8" fill="#10b981" className="opacity-0 drop-shadow-[0_0_15px_rgba(16,185,129,1)]" style={{ animation: 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 2.5s'}} />
-                    </svg>
-                    
-                    {/* Y Axis Labels */}
-                    <div className="absolute left-[-2rem] top-0 bottom-6 flex flex-col justify-between text-[10px] text-gray-500 font-mono">
-                       <span>5Cr</span>
-                       <span>3Cr</span>
-                       <span>1Cr</span>
-                       <span>0</span>
-                    </div>
+      {/* Global Slider Completely Separated (Now Outside the Black Box) */}
+      <div className="mb-32 pt-12 relative z-10 max-w-[1400px] mx-auto px-6">
+         <div className="text-center mb-12">
+           <p className="text-sm uppercase tracking-widest text-gray-500 font-bold">Trusted Globally By Innovative Companies</p>
+         </div>
+         <div className="relative overflow-hidden w-full">
+            {/* Gradients match the light #fafafa background outside the box */}
+            <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#fafafa] to-transparent z-20 pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#fafafa] to-transparent z-20 pointer-events-none"></div>
+            
+            <div className="animate-marquee flex w-max space-x-24 md:space-x-32 items-center px-8 pb-8 pt-4">
+              {[...companyLogos, ...companyLogos, ...companyLogos].map((company, idx) => (
+                 <div key={idx} className="flex items-center justify-center cursor-default select-none group transition-transform duration-500 hover:-translate-y-2">
+                    <img 
+                      src={company.logo} 
+                      alt={company.name} 
+                      className="h-8 md:h-12 w-auto max-w-[160px] object-contain filter grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
+                    />
                  </div>
-                 
-                 <div className="flex justify-between mt-4 text-[10px] text-gray-500 font-mono tracking-widest relative z-10 pl-2">
-                   <span>2022</span>
-                   <span>2024</span>
-                   <span className="text-emerald-400 font-bold text-xs bg-emerald-400/10 px-2 py-1 rounded">2026 (UPDATED)</span>
-                 </div>
-              </div>
-           </FadeInUp>
-       </div>
-
-       {/* Local Companies Slider with Continuous Glow */}
-       <div className="mt-24 pt-12 border-t border-white/10 relative z-10">
-          <div className="text-center mb-10">
-            <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">Local Software Companies we helped through our products & data</p>
-          </div>
-          <div className="relative overflow-hidden w-full">
-             <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
-             <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
-             
-             <div className="animate-marquee flex w-max space-x-12 items-center px-8 pb-4 pt-4">
-               {[...localCompanies, ...localCompanies, ...localCompanies].map((company, idx) => (
-                  <div key={idx} className="flex items-center px-6 py-4 rounded-xl border border-blue-500/20 bg-blue-500/10 text-white shadow-[0_0_20px_rgba(59,130,246,0.5)] cursor-default select-none group transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:-translate-y-1">
-                     <span className="text-blue-400 mr-3 drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]">{company.icon}</span>
-                     <span className="font-medium tracking-wide text-sm">{company.name}</span>
-                  </div>
-               ))}
-             </div>
-          </div>
-       </div>
-    </div>
+              ))}
+            </div>
+         </div>
+      </div>
+    </>
   );
 };
 
@@ -449,6 +455,7 @@ const LivePurchaseTicker = () => {
 export default function App() {
   const [currentView, setCurrentView] = useState('home'); 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Modals & Drawers
@@ -466,8 +473,15 @@ export default function App() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight || window.innerHeight;
+      const scrolled = scrollTop / (scrollHeight - clientHeight);
+      setScrollProgress(scrolled);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -624,7 +638,7 @@ export default function App() {
           100% { transform: translateY(200%); }
         }
         .animate-scroll-glow { animation: scroll-glow 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .glass-nav { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.5); }
         .glass-dark { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(16px); }
         .font-elegant { font-family: 'Playfair Display', 'Didot', 'Bodoni MT', serif; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -665,6 +679,18 @@ export default function App() {
            50% { filter: drop-shadow(0 0 20px rgba(0,0,0,0.2)); transform: translateY(-5px); }
         }
         .animate-pencil-glow { animation: pencilGlow 4s ease-in-out infinite; }
+
+        /* Premium Golden Scrolled Nav Animations */
+        @keyframes shimmer-sweep {
+          0% { left: -100%; }
+          50% { left: 200%; }
+          100% { left: 200%; }
+        }
+        @keyframes star-pulse {
+          0% { transform: scale(0); opacity: 0; }
+          50% { transform: scale(1.5); opacity: 1; box-shadow: 0 0 10px 2px rgba(251, 191, 36, 0.8); }
+          100% { transform: scale(0); opacity: 0; }
+        }
       `}} />
 
       {/* --- Toast Notification --- */}
@@ -687,12 +713,56 @@ export default function App() {
       </div>
 
       {/* --- Header / Navigation --- */}
-      <header className={`fixed w-full z-40 transition-all duration-500 ${isScrolled || isMobileMenuOpen ? 'glass-nav text-neutral-900 py-4' : 'bg-transparent text-white py-4 md:py-6'} top-[32px]`}>
-        <div className="max-w-[1400px] mx-auto px-4 md:px-12 flex justify-between items-center">
+      <header className={`fixed w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex justify-center ${isScrolled ? 'top-4 px-4' : 'top-[32px] px-0'}`}>
+        <div className={`relative transition-all duration-700 flex justify-between items-center w-full ${
+          isScrolled 
+            ? 'max-w-[900px] rounded-full text-white py-3 px-6 md:px-8 shadow-[0_20px_40px_-10px_rgba(251,191,36,0.2)]' 
+            : isMobileMenuOpen
+              ? 'max-w-[1400px] glass-nav text-neutral-900 py-4 px-4 md:px-12'
+              : 'max-w-[1400px] bg-transparent text-white py-4 md:py-6 px-4 md:px-12'
+        }`}>
           
-          <nav className="flex space-x-2 md:space-x-8 items-center text-[10px] md:text-xs tracking-widest font-medium uppercase">
+          {isScrolled && !isMobileMenuOpen && (
+            <div className="absolute inset-0 rounded-full pointer-events-none z-[-1]">
+               {/* 1. Animated Thin Glowing Golden Border */}
+               <div className="absolute inset-0 rounded-full overflow-hidden p-[1px]">
+                 <div className="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 bg-[conic-gradient(from_0deg,transparent_0_250deg,rgba(251,191,36,0.2)_280deg,#fbbf24_320deg,#fff_360deg)] animate-[spin_3s_linear_infinite]"></div>
+                 {/* The Dark Premium Glass Center */}
+                 <div className="absolute inset-[1px] rounded-full bg-black/50 backdrop-blur-2xl border border-white/5"></div>
+               </div>
+
+               {/* 2. Scrolling Loader Progress Bar */}
+               <div className="absolute bottom-[2px] left-6 right-6 h-[2px] bg-white/5 rounded-full overflow-hidden z-10">
+                 <div 
+                   className="h-full bg-gradient-to-r from-yellow-600/30 via-yellow-400 to-yellow-200 rounded-full transition-all duration-150 ease-out shadow-[0_0_10px_rgba(251,191,36,1)]"
+                   style={{ width: `${scrollProgress * 100}%` }}
+                 ></div>
+               </div>
+
+               {/* 3. Shimmer Sweep & Fade Glittery Particles */}
+               <div className="absolute inset-0 rounded-full overflow-hidden">
+                 <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] animate-[shimmer-sweep_6s_infinite_ease-in-out]"></div>
+                 
+                 <div className="absolute top-[20%] left-[15%] w-[2px] h-[2px] bg-yellow-300 rounded-full animate-[star-pulse_2s_infinite_0s]"></div>
+                 <div className="absolute bottom-[25%] right-[20%] w-[1px] h-[1px] bg-white rounded-full animate-[star-pulse_3s_infinite_1s]"></div>
+                 <div className="absolute top-[40%] right-[10%] w-[2px] h-[2px] bg-yellow-200 rounded-full animate-[star-pulse_1.5s_infinite_0.5s]"></div>
+                 <div className="absolute bottom-[20%] left-[30%] w-[1.5px] h-[1.5px] bg-yellow-400 rounded-full animate-[star-pulse_2.5s_infinite_1.5s]"></div>
+                 <div className="absolute top-[60%] left-[60%] w-[2px] h-[2px] bg-white rounded-full animate-[star-pulse_2.2s_infinite_0.8s]"></div>
+                 <div className="absolute top-[30%] left-[45%] w-[1px] h-[1px] bg-yellow-100 rounded-full animate-[star-pulse_3.5s_infinite_0.2s]"></div>
+                 <div className="absolute bottom-[45%] right-[35%] w-[2.5px] h-[2.5px] bg-yellow-300 rounded-full animate-[star-pulse_2.8s_infinite_1.1s]"></div>
+               </div>
+            </div>
+          )}
+
+          <nav className="relative z-10 flex space-x-2 md:space-x-8 items-center text-[10px] md:text-xs tracking-widest font-medium uppercase">
             <div className="group relative block">
-              <button className={`flex items-center transition-colors ${isScrolled ? 'hover:text-gray-500' : 'bg-neutral-900 text-white px-3 py-1.5 md:px-5 md:py-2 rounded-full hover:bg-neutral-800'}`}>
+              <button className={`flex items-center transition-colors ${
+                isScrolled && !isMobileMenuOpen
+                  ? 'bg-white/10 text-white border border-white/20 px-3 py-1.5 md:px-5 md:py-2 rounded-full hover:bg-white/20' 
+                  : isMobileMenuOpen 
+                    ? 'text-neutral-900 hover:text-gray-500' 
+                    : 'bg-neutral-900 text-white px-3 py-1.5 md:px-5 md:py-2 rounded-full hover:bg-neutral-800'
+              }`}>
                 SHOP <ChevronDown className="w-4 h-4 ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300" />
               </button>
               <div className="absolute top-full left-0 pt-6 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out">
@@ -723,15 +793,18 @@ export default function App() {
             <button onClick={() => navigate('about')} className="hidden md:block hover:opacity-70 transition-opacity">ABOUT</button>
           </nav>
 
-          <div className="absolute left-1/2 transform -translate-x-1/2 cursor-pointer flex items-center space-x-2" onClick={() => navigate('home')}>
-             <img src={SubjectLogo} alt="Logo" className="w-8 h-8 md:w-10 md:h-10" />
+          <div className="absolute left-1/2 transform -translate-x-1/2 cursor-pointer flex items-center space-x-2 z-10" onClick={() => navigate('home')}>
+             <svg className="w-8 h-8 md:w-10 md:h-10 text-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+               <path strokeLinecap="square" strokeLinejoin="miter" d="M3 7v2h5v11h4V9h5V7H3z" />
+               <circle cx="12" cy="12" r="10" strokeOpacity="0.2" />
+             </svg>
             <h1 className="text-2xl md:text-3xl font-medium tracking-tight flex items-baseline">
               <span className="font-serif italic mr-1 text-3xl">Tht</span>
               <span>Ceo</span>
             </h1>
           </div>
 
-          <div className="flex items-center space-x-4 md:space-x-6">
+          <div className="relative z-10 flex items-center space-x-4 md:space-x-6">
             <button onClick={() => navigate('contact')} className="hidden md:block text-xs tracking-widest font-medium uppercase hover:opacity-70 transition-opacity">CONTACT</button>
             <div className="flex items-center space-x-3 md:space-x-5">
               <button onClick={() => setIsSearchOpen(true)} className="hover:opacity-70 transition-opacity"><Search className="w-5 h-5 stroke-[1.5]" /></button>
@@ -1997,21 +2070,21 @@ export default function App() {
                <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
                
                <div className="animate-marquee flex w-max space-x-16 text-4xl md:text-6xl font-light uppercase tracking-widest text-black/50 items-center mt-12">
-                  <span>Escape Average</span>
-                  <span className="w-3 h-3 bg-black/50 rounded-full"></span>
-                  <span>Build Your Empire</span>
-                  <span className="w-3 h-3 bg-black/50 rounded-full"></span>
-                  <span>1% Habits = 100% Results</span>
-                  <span className="w-3 h-3 bg-black/50 rounded-full"></span>
-                  <span>Master Your Craft</span>
-                  <span className="w-3 h-3 bg-black/50 rounded-full"></span>
-                  <span>Escape Average</span>
-                  <span className="w-3 h-3 bg-black/50 rounded-full"></span>
-                  <span>Build Your Empire</span>
-                  <span className="w-3 h-3 bg-black/50 rounded-full"></span>
-                  <span>1% Habits = 100% Results</span>
-                  <span className="w-3 h-3 bg-black/50 rounded-full"></span>
-                  <span>Master Your Craft</span>
+                 <span>Escape Average</span>
+                 <span className="w-3 h-3 bg-black/50 rounded-full"></span>
+                 <span>Build Your Empire</span>
+                 <span className="w-3 h-3 bg-black/50 rounded-full"></span>
+                 <span>1% Habits = 100% Results</span>
+                 <span className="w-3 h-3 bg-black/50 rounded-full"></span>
+                 <span>Master Your Craft</span>
+                 <span className="w-3 h-3 bg-black/50 rounded-full"></span>
+                 <span>Escape Average</span>
+                 <span className="w-3 h-3 bg-black/50 rounded-full"></span>
+                 <span>Build Your Empire</span>
+                 <span className="w-3 h-3 bg-black/50 rounded-full"></span>
+                 <span>1% Habits = 100% Results</span>
+                 <span className="w-3 h-3 bg-black/50 rounded-full"></span>
+                 <span>Master Your Craft</span>
                </div>
             </div>
 

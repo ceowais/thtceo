@@ -125,32 +125,56 @@ const SUCCESS_STORIES = [
 // Barcode static array for consistent rendering
 const barcodeWidths = [2, 4, 1, 3, 2, 1, 4, 2, 2, 1, 3, 4, 1, 2, 2, 4, 1, 1, 3, 2, 4, 1, 2, 3];
 
+const HERO_FEATURED_IMAGES = [
+  {
+    src: '/images/background%201.jpeg',
+    alt: 'Luxury CEO office interior',
+    objectPosition: '58% center',
+  },
+  {
+    src: '/images/background%202.jpeg',
+    alt: 'Executive standing near a private jet and car',
+    objectPosition: '50% center',
+  },
+  {
+    src: '/images/background%203.jpeg',
+    alt: 'Entrepreneur walking toward the one percent path',
+    objectPosition: '50% center',
+  },
+];
+
+const BRAND_LOGO = '/images/Subject.png';
+const ABOUT_CEO_IMAGE = '/images/ceo.png';
+const ID_CARD_DP_IMAGE = '/images/idcard.png';
+const LEARN_PHASE_ONE_IMAGE = '/images/learn-like-me.jpg';
+
 // --- Sub-Components ---
 
 const HomeHeroSlider = ({ onNavigate }) => {
-  const images = [
-    "https://images.unsplash.com/photo-1611864195156-fbd29c382285?q=80&w=2564&auto=format&fit=crop", // Rolls Royce
-    "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2500&auto=format&fit=crop", // Exotic Car
-    "https://images.unsplash.com/photo-1540914124281-342587941389?q=80&w=2500&auto=format&fit=crop"  // Luxury Cityscape/Mansion
-  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      setCurrentIndex((prev) => (prev + 1) % HERO_FEATURED_IMAGES.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, [images.length]);
+  }, []);
 
   return (
-    <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-black">
-      {images.map((img, index) => (
+    <section className="relative min-h-[620px] h-[100svh] w-full flex items-center justify-center overflow-hidden bg-black">
+      {HERO_FEATURED_IMAGES.map((image, index) => (
         <div
-          key={index}
+          key={image.src}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentIndex ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
+          aria-hidden={index !== currentIndex}
         >
-          <img src={img} alt="Luxury Lifestyle" className="w-full h-full object-cover object-center scale-105" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80"></div>
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="w-full h-full object-cover scale-105"
+            style={{ objectPosition: image.objectPosition }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-black/85"></div>
         </div>
       ))}
 
@@ -793,16 +817,22 @@ export default function App() {
             <button onClick={() => navigate('about')} className="hidden md:block hover:opacity-70 transition-opacity">ABOUT</button>
           </nav>
 
-          <div className="absolute left-1/2 transform -translate-x-1/2 cursor-pointer flex items-center space-x-2 z-10" onClick={() => navigate('home')}>
-             <svg className="w-8 h-8 md:w-10 md:h-10 text-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-               <path strokeLinecap="square" strokeLinejoin="miter" d="M3 7v2h5v11h4V9h5V7H3z" />
-               <circle cx="12" cy="12" r="10" strokeOpacity="0.2" />
-             </svg>
-            <h1 className="text-2xl md:text-3xl font-medium tracking-tight flex items-baseline">
-              <span className="font-serif italic mr-1 text-3xl">Tht</span>
+          <button
+            type="button"
+            className="absolute left-1/2 transform -translate-x-1/2 z-10 flex items-center justify-center gap-2 md:gap-3 cursor-pointer transition-opacity hover:opacity-85"
+            onClick={() => navigate('home')}
+            aria-label="ThtCeo home"
+          >
+            <img
+              src={BRAND_LOGO}
+              alt="ThtCeo"
+              className="h-10 w-auto md:h-12 object-contain drop-shadow-[0_10px_18px_rgba(0,0,0,0.45)]"
+            />
+            <span className="flex items-baseline whitespace-nowrap text-2xl md:text-3xl font-medium tracking-tight">
+              <span className="font-serif italic mr-1 text-3xl md:text-4xl">Tht</span>
               <span>Ceo</span>
-            </h1>
-          </div>
+            </span>
+          </button>
 
           <div className="relative z-10 flex items-center space-x-4 md:space-x-6">
             <button onClick={() => navigate('contact')} className="hidden md:block text-xs tracking-widest font-medium uppercase hover:opacity-70 transition-opacity">CONTACT</button>
@@ -1178,7 +1208,7 @@ export default function App() {
                       
                       <div className="flex flex-col items-center flex-1 relative z-10">
                          <div className="w-28 h-28 rounded-full overflow-hidden border-[3px] border-white/20 mb-6 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover grayscale" alt="CEO" />
+                            <img src={ID_CARD_DP_IMAGE} className="w-full h-full object-cover object-center grayscale" alt="CEO" />
                          </div>
                          <h3 className="text-white text-2xl font-medium tracking-wider mb-1">Visionary CEO</h3>
                          <p className="text-blue-400 text-xs uppercase tracking-widest mb-6">Architect & Founder</p>
@@ -1203,11 +1233,11 @@ export default function App() {
                       {/* Back glowing pattern deeply professional */}
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_0,transparent_60%)] animate-pulse"></div>
                       <div className="relative z-10 flex flex-col items-center text-center p-8">
-                         <svg className="w-20 h-20 text-white mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <path strokeLinecap="square" strokeLinejoin="miter" d="M3 7v2h5v11h4V9h5V7H3z" />
-                            <circle cx="12" cy="12" r="10" strokeOpacity="0.2" />
-                         </svg>
-                         <span className="text-white tracking-[0.3em] text-xl font-light uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">ThtCeo</span>
+                         <img
+                           src={BRAND_LOGO}
+                           alt="ThtCeo logo"
+                           className="h-36 w-auto object-contain mb-4 drop-shadow-[0_0_22px_rgba(234,179,8,0.55)]"
+                         />
                          <span className="text-white tracking-[0.2em] text-sm font-light uppercase mt-2">Organization</span>
                          <div className="w-12 h-px bg-white/30 my-6"></div>
                          <span className="text-gray-400 tracking-widest text-[10px] uppercase">Security Level: Maximum</span>
@@ -1928,7 +1958,7 @@ export default function App() {
             
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <FadeInUp className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl relative group">
-                 <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2564&auto=format&fit=crop" alt="CEO Profile" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" />
+                 <img src={ABOUT_CEO_IMAGE} alt="Company CEO" className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
                  <div className="absolute bottom-8 left-8 right-8 text-white">
                     <h3 className="text-3xl font-medium mb-2">Company CEO</h3>
@@ -1991,7 +2021,7 @@ export default function App() {
                    
                    <FadeInUp className="w-full md:w-[calc(50%-4rem)] pl-20 md:pl-0 md:pr-0">
                      <div className="overflow-hidden rounded-2xl shadow-2xl aspect-[4/3] relative group-hover:-translate-y-2 transition-transform duration-700">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" alt="Phase 1 Assets" />
+                        <img src={LEARN_PHASE_ONE_IMAGE} className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" alt="Phase 1 Assets" />
                      </div>
                    </FadeInUp>
                    
@@ -2189,14 +2219,22 @@ export default function App() {
             {/* Brand Col */}
             <div className="sm:col-span-2 lg:col-span-4 flex flex-col justify-between">
               <div>
-                <h2 className="text-4xl font-medium tracking-tight flex items-baseline mb-6 cursor-pointer hover:opacity-80 transition-opacity w-max" onClick={() => navigate('home')}>
-                   <svg className={`w-8 h-8 mr-2 text-white`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="square" strokeLinejoin="miter" d="M3 7v2h5v11h4V9h5V7H3z" />
-                      <circle cx="12" cy="12" r="10" strokeOpacity="0.2" />
-                   </svg>
-                  <span className="font-serif italic mr-1 text-5xl">Tht</span>
-                  <span>Ceo</span>
-                </h2>
+                <button
+                  type="button"
+                  className="mb-6 w-max cursor-pointer transition-opacity hover:opacity-85 flex items-center gap-4"
+                  onClick={() => navigate('home')}
+                  aria-label="ThtCeo home"
+                >
+                  <img
+                    src={BRAND_LOGO}
+                    alt="ThtCeo"
+                    className="h-20 w-auto object-contain drop-shadow-[0_12px_24px_rgba(234,179,8,0.25)]"
+                  />
+                  <span className="flex items-baseline text-4xl font-medium tracking-tight text-white">
+                    <span className="font-serif italic mr-1 text-5xl">Tht</span>
+                    <span>Ceo</span>
+                  </span>
+                </button>
                 <p className="text-gray-400 text-sm leading-loose max-w-sm">
                   A premium digital storefront designed for the modern creator. Sell courses, digital products, design assets, and premium softwares with unmatched elegance.
                 </p>
